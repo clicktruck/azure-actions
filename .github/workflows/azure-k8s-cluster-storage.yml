@@ -1,0 +1,105 @@
+name: "azure-kubernetes-service-storage-updates"
+
+on:
+  workflow_call:
+    inputs:
+      cluster-name:
+        description: "Name of the AKS cluster where StorageClass configuration updates will be made"
+        required: true
+        type: string
+      resource-group-name:
+        description: "The resource group to provision the cluster in"
+        required: true
+        type: string
+      action:
+        required: true
+        type: string
+        description: "Update or rollback"
+    secrets:
+      AZURE_AD_CLIENT_ID:
+        required: true
+      AZURE_AD_CLIENT_SECRET:
+        required: true
+      AZURE_SUBSCRIPTION_ID:
+        required: true
+      AZURE_AD_TENANT_ID:
+        required: true
+      TF_BACKEND_RESOURCE_GROUP_NAME:
+        required: true
+      TF_BACKEND_STORAGE_ACCOUNT_NAME:
+        required: true
+      TF_BACKEND_STORAGE_CONTAINER_NAME:
+        required: true
+      KUBECONFIG_CONTENTS:
+        required: true
+
+jobs:
+  manage-storage:
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
+      TF_VAR_kubeconfig_path: "/tmp/.kube/config"
+      KUBECONFIG: "/tmp/.kube/config"
+
+    runs-on: ubuntu-22.04
+
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-22.04, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: terraform/azure/cluster-storage
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        repository: clicktruck/azure-terraform
+
+    # Install the latest version of Terraform CLI
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_wrapper: false
+        terraform_version: 1.8.0
+
+    - name: Generate backend configuration
+      run: |
+        cp ../backend/backend.tf .
+        echo "resource_group_name = \"${{ secrets.TF_BACKEND_RESOURCE_GROUP_NAME }}\"" > config.azurerm.tfbackend
+        echo "storage_account_name = \"${{ secrets.TF_BACKEND_STORAGE_ACCOUNT_NAME }}\"" >> config.azurerm.tfbackend
+        echo "container_name = \"${{ secrets.TF_BACKEND_STORAGE_CONTAINER_NAME }}\"" >> config.azurerm.tfbackend
+        echo "key = \"${{ inputs.resource-group-name }}.cluster.storage.${{ inputs.cluster-name }}.tfstate\"" >> config.azurerm.tfbackend
+
+    - name: Generate .kube/config
+      env:
+        KUBECONFIG_CONTENTS: ${{ secrets.KUBECONFIG_CONTENTS }}
+      run: |
+        mkdir -p /tmp/.kube
+        echo "$KUBECONFIG_CONTENTS" | base64 -d > /tmp/.kube/config
+        chmod 600 /tmp/.kube/config
+
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init
+      run: terraform init -upgrade -backend-config=./config.azurerm.tfbackend
+
+    # Checks that all Terraform configuration files adhere to a canonical format
+    - name: Terraform Format
+      run: terraform fmt -check
+
+    # Generates an execution plan for Terraform
+    - name: Terraform Plan
+      if: inputs.action == 'update'
+      run: terraform plan
+
+    - name: Terraform Apply
+      if: inputs.action == 'update'
+      run: terraform apply -auto-approve
+
+    - name: Terraform Destroy
+      if: inputs.action == 'rollback'
+      run: |
+        terraform destroy -auto-approve
