@@ -1,11 +1,10 @@
 FROM ubuntu:22.04
 
-LABEL "com.github.actions.name"="tanzu-runsh-setup-action"
-LABEL "com.github.actions.icon"="server"
-LABEL "com.github.actions.color"="blue"
-
-LABEL "repository"="https://github.com/clicktruck/azure-actions/docker/actions/azure/tanzu-runsh-setup-action"
-LABEL "maintainer"="Chris Phillipson <chris@clicktruck.org>"
+LABEL "com.github.actions.name"="tanzu-runsh-setup-action" \
+      "com.github.actions.icon"="server" \
+      "com.github.actions.color"="blue" \
+      "repository"="https://github.com/clicktruck/azure-actions/docker/actions/azure/tanzu-runsh-setup-action" \
+      "maintainer"="Chris Phillipson <chris@clicktruck.org>"
 
 ENV HELM_VERSION=3.14.4 \
     IMGPKG_VERSION=0.42.0 \
