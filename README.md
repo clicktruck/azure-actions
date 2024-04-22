@@ -132,14 +132,14 @@ export AZURE_REGION=
 
 ### Setup the Terraform backend in Azure
 
-Under Github Actions, manually trigger [setup-remote-backend-for-terraform-state](../../../actions/workflows/setup-azure-provided-remote-backend.yml).
+Under Github Actions, manually trigger [setup-remote-backend-for-terraform-state](../../actions/workflows/setup-azure-provided-remote-backend.yml).
 
 > See [setup-azure-provided-remote-backend.yml](../.github/workflows/setup-azure-provided-remote-backend.yml)
 
 
 ### Create Shared Image Gallery, Image Definition, and Toolset Image
 
-Under Github Actions, manually trigger [azure-08-build-toolset-image](../../../actions/workflows/azure-ubuntu-22_04.yml).
+Under Github Actions, manually trigger [azure-08-build-toolset-image](../../actions/workflows/azure-ubuntu-22_04.yml).
 
 > Record or remember the resource group name you specify in this action as you will need it in later steps.
 
@@ -155,7 +155,7 @@ Alternatively, you could create the gallery, image definition, and image by exec
 
 Take this path when you want to get up-and-running as quickly as possible with the least amount of fuss.
 
-Under Github Actions, manually trigger [azure-create-workshop-environment](../../../actions/workflows/azure-e2e.yml)
+Under Github Actions, manually trigger [azure-create-workshop-environment](../../actions/workflows/azure-e2e.yml)
 
 * The DNS Zone name must be a domain you control and can configure nameservers for
 * VM types can be found [here](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes) - `Standard_D4_v3` is a good option
@@ -165,7 +165,7 @@ Under Github Actions, manually trigger [azure-create-workshop-environment](../..
 
 Administer resources one at a time.  Take this path when you want to take a closer look at the GitHub Actions and Terraform modules.
 
-There are two types of actions defined, those that can be manually triggered (i.e., dispatched), and those that can only be called by another action.  All actions are located [here](../../../actions) and can be run by providing the required parameters.  Go [here](../.github/workflows) to inspect the source for each action.
+There are two types of actions defined, those that can be manually triggered (i.e., dispatched), and those that can only be called by another action.  All actions are located [here](../../actions) and can be run by providing the required parameters.  Go [here](../.github/workflows) to inspect the source for each action.
 
 > Note that for most dispatch actions, you have the option to either create or destroy the resources.
 
@@ -173,16 +173,16 @@ There are two types of actions defined, those that can be manually triggered (i.
 
 | Module       | Github Action       | Terraform               |
 | :---       | :---:               | :---:                   |
-| Resource group |[:white_check_mark:](../../../actions/workflows/azure-resource-group-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/resource-group) |
+| Resource group |[:white_check_mark:](../../actions/workflows/azure-resource-group-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/resource-group) |
 | If your environment will be multi-tenant and you want to maintain separation of control between participants and their associated child DNS domains, create a resource group for the parent DNS zone separately from the rest of the resources.||
-| Key Vault | [:white_check_mark:](../../../actions/workflows/azure-keyvault-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/keyvault) |
-| Key Vault Secrets | [:white_check_mark:](../../../actions/workflows/azure-keyvault-secrets-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/keyvault-secrets) |
-| DNS Zone for main domain | [:white_check_mark:](../../../actions/workflows/azure-main-dns-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/main-dns) |
-| DNS Zone for sub domain | [:white_check_mark:](../../../actions/workflows/azure-child-dns-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/child-dns) |
-| Virtual Network | [:white_check_mark:](../../../actions/workflows/azure-virtual-network-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/virtual-network) |
-| AKS Cluster | [:white_check_mark:](../../../actions/workflows/azure-k8s-cluster-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/cluster) |
-| Container registry | [:white_check_mark:](../../../actions/workflows/azure-container-registry-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/registry) |
-| Bastion | [:white_check_mark:](../../../actions/workflows/azure-bastion-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/bastion) |
+| Key Vault | [:white_check_mark:](../../actions/workflows/azure-keyvault-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/keyvault) |
+| Key Vault Secrets | [:white_check_mark:](../../actions/workflows/azure-keyvault-secrets-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/keyvault-secrets) |
+| DNS Zone for main domain | [:white_check_mark:](../../actions/workflows/azure-main-dns-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/main-dns) |
+| DNS Zone for sub domain | [:white_check_mark:](../../actions/workflows/azure-child-dns-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/child-dns) |
+| Virtual Network | [:white_check_mark:](../../actions/workflows/azure-virtual-network-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/virtual-network) |
+| AKS Cluster | [:white_check_mark:](../../actions/workflows/azure-k8s-cluster-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/cluster) |
+| Container registry | [:white_check_mark:](../../actions/workflows/azure-container-registry-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/registry) |
+| Bastion | [:white_check_mark:](../../actions/workflows/azure-bastion-dispatch.yml) | [:white_check_mark:](https://github.com/clicktruck/azure-terraform/tree/main/modules/bastion) |
 
 
 ## Vending credentials
@@ -210,4 +210,4 @@ Once you SSH to the VM there will be credentials for the ACR registry in the hom
 
 ## Cleaning up everything
 
-In order to destroy all of the resources created you can use the github action [azure-destroy-workshop-environment](../../../actions/workflows/azure-e2e-destroy.yml).  This action should be run with th same inputs used to create an environment. If this is multi-tenant you will want to run this once for each tenant. Additionally there is an option to clean up core components this is defaulted to `no` only choose yes if you are destroying all tenant environments since this will destroy the main DNS resource group as well as the Shared Image Gallery.
+In order to destroy all of the resources created you can use the github action [azure-destroy-workshop-environment](../../actions/workflows/azure-e2e-destroy.yml).  This action should be run with th same inputs used to create an environment. If this is multi-tenant you will want to run this once for each tenant. Additionally there is an option to clean up core components this is defaulted to `no` only choose yes if you are destroying all tenant environments since this will destroy the main DNS resource group as well as the Shared Image Gallery.
