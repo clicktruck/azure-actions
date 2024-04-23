@@ -1,4 +1,4 @@
-name: "azure-kubernetes-service-storage-updates"
+name: "administer-kubernetes-service-storage-updates"
 
 on:
   workflow_call:

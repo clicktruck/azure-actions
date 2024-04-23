@@ -1,4 +1,4 @@
-name: "azure-destroy-workshop-environment"
+name: "destroy-workshop-environment"
 
 on:
   workflow_dispatch:

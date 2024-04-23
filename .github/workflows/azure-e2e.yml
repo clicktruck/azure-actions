@@ -1,4 +1,4 @@
-name: "azure-create-workshop-environment"
+name: "create-workshop-environment"
 
 on:
   workflow_dispatch:

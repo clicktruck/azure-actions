@@ -1,4 +1,4 @@
-name: "azure-08d-create-shared-image-gallery-and-image-definition"
+name: "create-shared-image-gallery-and-image-definition"
 
 on:
   workflow_call:

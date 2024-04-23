@@ -1,4 +1,4 @@
-name: "azure-harbor-dispatch"
+name: "dispatch-harbor"
 
 on:
   workflow_dispatch:

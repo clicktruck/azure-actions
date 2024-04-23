@@ -1,4 +1,4 @@
-name: "azure-harbor"
+name: "administer-harbor"
 
 on:
   workflow_call:

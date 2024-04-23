@@ -155,7 +155,7 @@ Alternatively, you could create the gallery, image definition, and image by exec
 
 Take this path when you want to get up-and-running as quickly as possible with the least amount of fuss.
 
-Under Github Actions, manually trigger [azure-create-workshop-environment](../../actions/workflows/azure-e2e.yml)
+Under Github Actions, manually trigger [create-workshop-environment](../../actions/workflows/azure-e2e.yml)
 
 * The DNS Zone name must be a domain you control and can configure nameservers for
 * VM types can be found [here](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes) - `Standard_D4_v3` is a good option
