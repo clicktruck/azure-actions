@@ -107,7 +107,6 @@ jobs:
       resourceGroupName: participant-${{ github.event.inputs.participantNumber }}
       operatorSubnetCidr: 10.1.0.0/24
       aksSubnetCidr: 10.1.128.0/18
-      agwSubnetCidr: 10.1.1.0/24
       action: create
     secrets:
       AZURE_AD_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
