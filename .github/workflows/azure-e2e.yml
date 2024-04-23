@@ -211,7 +211,7 @@ jobs:
       TF_BACKEND_STORAGE_CONTAINER_NAME:  ${{ secrets.TF_BACKEND_STORAGE_CONTAINER_NAME }}
   create-new-project-in-harbor:
     needs: install-harbor
-    uses: ./.github/workflows/create-harbor-project.yml
+    uses: clicktruck/platform-actions/.github/workflows/create-harbor-project.yml@main
     with:
       api-endpoint: harbor.${{ github.event.inputs.domainPrefix }}.${{ github.event.inputs.baseDomain }}
       project: "tanzu"
