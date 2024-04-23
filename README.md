@@ -134,7 +134,7 @@ You'll also want to [create another secret](https://github.com/clicktruck/script
 
 Under Github Actions, manually trigger [setup-remote-backend-for-terraform-state](../../actions/workflows/setup-azure-provided-remote-backend.yml).
 
-> See [setup-azure-provided-remote-backend.yml](../.github/workflows/setup-azure-provided-remote-backend.yml)
+> See [setup-azure-provided-remote-backend.yml](.github/workflows/setup-azure-provided-remote-backend.yml)
 
 
 ### Create Shared Image Gallery, Image Definition, and Toolset Image
