@@ -57,7 +57,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: terraform/azure/child-dns
+        working-directory: modules/child-dns
 
     steps:
     # Checkout the repository to the GitHub Actions runner

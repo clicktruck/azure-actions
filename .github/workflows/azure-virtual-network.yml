@@ -62,7 +62,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: terraform/azure/virtual-network
+        working-directory: modules/virtual-network
 
     steps:
     # Checkout the repository to the GitHub Actions runner

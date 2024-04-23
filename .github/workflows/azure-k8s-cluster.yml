@@ -95,7 +95,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: terraform/azure/cluster
+        working-directory: modules/cluster
 
     steps:
     # Checkout the repository to the GitHub Actions runner

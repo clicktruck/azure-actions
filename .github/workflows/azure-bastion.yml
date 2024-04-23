@@ -81,7 +81,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: terraform/azure/bastion
+        working-directory: modules/bastion
 
     steps:
     # Checkout the repository to the GitHub Actions runner

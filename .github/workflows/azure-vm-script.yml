@@ -54,7 +54,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: terraform/azure/vm-script
+        working-directory: modules/vm-script
 
     steps:
     # Checkout the repository to the GitHub Actions runner

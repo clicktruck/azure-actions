@@ -70,7 +70,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: terraform/k8s/harbor
+        working-directory: modules/harbor
 
     steps:
     # Checkout the repository to the GitHub Actions runner

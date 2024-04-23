@@ -84,7 +84,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: terraform/azure/compute-gallery
+        working-directory: modules/compute-gallery
 
     steps:
     # Checkout the repository to the GitHub Actions runner

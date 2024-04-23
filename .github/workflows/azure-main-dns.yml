@@ -49,7 +49,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: terraform/azure/main-dns
+        working-directory: modules/main-dns
 
     steps:
     # Checkout the repository to the GitHub Actions runner

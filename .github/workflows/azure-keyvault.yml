@@ -49,7 +49,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: terraform/azure/keyvault
+        working-directory: modules/keyvault
 
     steps:
     # Checkout the repository to the GitHub Actions runner

@@ -44,7 +44,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: terraform/azure/resource-group
+        working-directory: modules/resource-group
 
     steps:
     # Checkout the repository to the GitHub Actions runner
