@@ -139,7 +139,7 @@ Under Github Actions, manually trigger [setup-remote-backend-for-terraform-state
 
 ### Create Shared Image Gallery, Image Definition, and Toolset Image
 
-Under Github Actions, manually trigger [azure-08-build-toolset-image](../../actions/workflows/azure-ubuntu-22_04.yml).
+Under Github Actions, manually trigger [build-toolset-image](../../actions/workflows/azure-ubuntu-22_04.yml).
 
 > Record or remember the resource group name you specify in this action as you will need it in later steps.
 
