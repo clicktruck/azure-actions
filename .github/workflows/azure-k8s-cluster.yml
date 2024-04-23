@@ -200,7 +200,7 @@ jobs:
   install-tanzu-data-services-repo:
     if: inputs.action == 'create'
     needs: [terraform,install-tanzu-cluster-essentials]
-    uses: ./.github/workflows/install-tanzu-data-services-repo.yml
+    uses: clicktruck/platform-actions/.github/workflows/install-tanzu-data-services-repo.yml@main
     with:
       cluster-provider: "aks"
       tds-version: "1.13.0"
