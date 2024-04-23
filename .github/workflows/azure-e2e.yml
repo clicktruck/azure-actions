@@ -464,10 +464,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+      with:
+        repository: clicktruck/scripts
     - name: b64 script
       id: b64
       run: |
-          bastion_script=$(cat scripts/azure/fetch-creds-on-azure-bastion.sh | base64 -w 0)
+          bastion_script=$(cat azure/fetch-creds-on-azure-bastion.sh | base64 -w 0)
           echo "bastion_script=${bastion_script}" >> $GITHUB_OUTPUT
 
   run-script:
