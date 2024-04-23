@@ -178,7 +178,7 @@ jobs:
       TANZU_NETWORK_PASSWORD: ${{ secrets.TANZU_NETWORK_PASSWORD }}
       PA_TOKEN: ${{ secrets.PA_TOKEN }}
   install-tanzu-ingress-into-harbor-cluster:
-    uses: ./.github/workflows/install-tanzu-ingress.yml
+    uses: clicktruck/platform-actions/.github/workflows/install-tanzu-ingress.yml@main
     needs: create-harbor-cluster
     with:
       target-cloud: "azure"
