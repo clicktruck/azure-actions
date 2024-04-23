@@ -33,13 +33,15 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
+      with:
+        repository: clicktruck/scripts
 
     - name: Azure CLI script file
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          chmod +x $GITHUB_WORKSPACE/scripts/azure/setup-azure-provided-remote-backend.sh
-          $GITHUB_WORKSPACE/scripts/azure/setup-azure-provided-remote-backend.sh
+          chmod +x $GITHUB_WORKSPACE/azure/setup-azure-provided-remote-backend.sh
+          $GITHUB_WORKSPACE/azure/setup-azure-provided-remote-backend.sh
 
   add-backend-config-as-secrets:
     runs-on: ubuntu-22.04
