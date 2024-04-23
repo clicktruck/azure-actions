@@ -170,7 +170,7 @@ jobs:
   install-tanzu-cluster-essentials:
     if: inputs.action == 'create'
     needs: terraform
-    uses: ./.github/workflows/install-tanzu-cluster-essentials.yml
+    uses: clicktruck/platform-actions/.github/workflows/install-tanzu-cluster-essentials.yml@main
     with:
       cluster-provider: "aks"
     secrets:
@@ -182,10 +182,10 @@ jobs:
   install-tanzu-standard-repo:
     if: inputs.action == 'create'
     needs: [terraform,install-tanzu-cluster-essentials]
-    uses: ./.github/workflows/install-tanzu-standard-repo.yml
+    uses: clicktruck/platform-actions/.github/workflows/install-tanzu-standard-repo.yml@main
     with:
       cluster-provider: "aks"
-      tkg-version: "v2023.9.19"
+      tkg-version: "v2024.2.1"
     secrets:
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       AZURE_AD_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
@@ -203,7 +203,7 @@ jobs:
     uses: ./.github/workflows/install-tanzu-data-services-repo.yml
     with:
       cluster-provider: "aks"
-      tds-version: "1.12.1"
+      tds-version: "1.13.0"
     secrets:
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       AZURE_AD_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
