@@ -212,7 +212,7 @@ jobs:
     needs: install-harbor
     uses: clicktruck/platform-actions/.github/workflows/create-harbor-project.yml@main
     with:
-      api-endpoint: harbor.${{ github.event.inputs.domainPrefix }}.${{ github.event.inputs.baseDomain }}
+      api-endpoint: harbor.${{ github.event.inputs.baseDomain }}
       project: "tanzu"
     secrets:
       HARBOR_USERNAME: "admin"
