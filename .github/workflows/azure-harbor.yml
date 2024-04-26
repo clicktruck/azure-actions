@@ -70,7 +70,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: modules/harbor
+        working-directory: registry/modules/harbor
 
     steps:
     # Checkout the repository to the GitHub Actions runner
@@ -78,6 +78,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: clicktruck/k8s-terraform
+        path: registry
 
     # Install the latest version of Terraform CLI
     - name: Setup Terraform
