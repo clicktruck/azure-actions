@@ -217,6 +217,7 @@ jobs:
     secrets:
       HARBOR_USERNAME: "admin"
       HARBOR_PASSWORD: ${{ needs.install-harbor.outputs.harbor_admin_password }}
+      PA_TOKEN: ${{ secrets.PA_TOKEN }}
   create-tap-cluster:
     if: github.event.inputs.footprint == 'single-cluster'
     uses: ./.github/workflows/azure-k8s-cluster.yml
