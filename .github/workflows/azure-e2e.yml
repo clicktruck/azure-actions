@@ -208,16 +208,6 @@ jobs:
       TF_BACKEND_RESOURCE_GROUP_NAME: ${{ secrets.TF_BACKEND_RESOURCE_GROUP_NAME }}
       TF_BACKEND_STORAGE_ACCOUNT_NAME: ${{ secrets.TF_BACKEND_STORAGE_ACCOUNT_NAME }}
       TF_BACKEND_STORAGE_CONTAINER_NAME:  ${{ secrets.TF_BACKEND_STORAGE_CONTAINER_NAME }}
-  create-new-project-in-harbor:
-    needs: install-harbor
-    uses: clicktruck/platform-actions/.github/workflows/create-harbor-project.yml@main
-    with:
-      api-endpoint: harbor.${{ github.event.inputs.baseDomain }}
-      project: "tanzu"
-    secrets:
-      HARBOR_USERNAME: "admin"
-      HARBOR_PASSWORD: ${{ needs.install-harbor.outputs.harbor_admin_password }}
-      PA_TOKEN: ${{ secrets.PA_TOKEN }}
   create-tap-cluster:
     if: github.event.inputs.footprint == 'single-cluster'
     uses: ./.github/workflows/azure-k8s-cluster.yml
