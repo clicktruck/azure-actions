@@ -7,7 +7,7 @@ LABEL "com.github.actions.name"="tanzu-runsh-setup-action" \
       "maintainer"="Chris Phillipson <chris@clicktruck.org>"
 
 ENV HELM_VERSION=3.14.4 \
-    IMGPKG_VERSION=0.42.0 \
+    IMGPKG_VERSION=0.42.1 \
     KAPP_VERSION=0.62.0 \
     KBLD_VERSION=0.43.0 \
     KCTRL_VERSION=0.51.0 \
