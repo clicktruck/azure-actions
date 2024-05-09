@@ -37,7 +37,7 @@ jobs:
         repository: clicktruck/scripts
 
     - name: Azure CLI script file
-      uses: azure/CLI@v1
+      uses: azure/CLI@v2
       with:
         inlineScript: |
           chmod +x $GITHUB_WORKSPACE/azure/setup-azure-provided-remote-backend.sh
