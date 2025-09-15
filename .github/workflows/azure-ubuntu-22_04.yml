@@ -48,13 +48,13 @@ jobs:
 
     steps:
       - name: Checkout packer HCL
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: clicktruck/azure-packer
           path: packer
 
       - name: Checkout scripts
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: clicktruck/scripts
           path: scripts

@@ -453,7 +453,7 @@ jobs:
       bastion_script: ${{ steps.b64.outputs.bastion_script }}
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         repository: clicktruck/scripts
     - name: b64 script
