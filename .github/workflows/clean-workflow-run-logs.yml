@@ -12,7 +12,7 @@ jobs:
   clean-logs:
     runs-on: ubuntu-22.04
     steps:
-      - uses: igorjs/gh-actions-clean-workflow@v6
+      - uses: igorjs/gh-actions-clean-workflow@v7
         with:
           token: ${{ secrets.PA_TOKEN }}
           owner: ${{ github.repository_owner }}
